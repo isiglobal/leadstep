@@ -1,6 +1,6 @@
 LeadStep
 ========
-![They're not made of lead, but the iron boots are heavy](http://i.imgur.com/g3vzh2W.jpg)
+[![They're not made of lead, but the iron boots are heavy](http://i.imgur.com/i18hR9S.jpg)](#leadstep)
 
 LeadStep is a simple set of backbone models and views that unifies  the various step-by-step forms that the iSchool team uses to acquire information on sales leads. 
 

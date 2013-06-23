@@ -10,7 +10,12 @@
     <link href="./includes/design.css" rel="stylesheet">
   </head>
   <body>
+    <div id="main">
+    </div>
     <!-- Libs -->
+    <script data-main="scripts/main" src="scripts/require.js"></script>
+
+    <script src="./includes/require.js"></script>
     <script src="./includes/jquery.js"></script>
     <script src="./includes/mustache.js"></script>
     <script src="./includes/underscore.js"></script>
@@ -20,5 +25,11 @@
     <script src="./src/step.js"></script>
     <script src="./src/nav.js"></script>
     <script src="./src/app.js"></script>
+    <script src="./demo.js"></script>
+    <script type="text/javascript">
+      $(function() {
+          //load_library('./leadstep.js');
+      });
+    </script>
   </body>
 </html>
