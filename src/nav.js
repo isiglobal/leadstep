@@ -1,7 +1,6 @@
 define([
-	'jquery', 'underscore', 'backbone',
   ], 
-  function($, _, Backbone) {
+  function() {
 	'use strict';
 
 	console.log('loaded nav');
