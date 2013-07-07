@@ -1,4 +1,16 @@
+define([
+	'jquery', 'underscore', 'backbone',
+  ], 
+  function($, _, Backbone) {
+	'use strict';
 
-var nav = function() {
-	console.log('nav');
-}
+	console.log('loaded nav');
+
+	var nav = function() {
+		console.log('nav');
+	}
+
+	return {
+		nav: 'nav',
+	};
+});

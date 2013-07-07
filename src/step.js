@@ -1,4 +1,17 @@
+define([
+	'jquery', 'underscore', 'backbone',
+	'state',
+  ], 
+  function($, _, Backbone, State) {
+	'use strict';
 
-var step = function() {
-	console.log('step');
-}
+	console.log('loaded step');
+
+	var step = function() {
+		console.log('step');
+	}
+
+	return {
+		step: 'step',
+	};
+});

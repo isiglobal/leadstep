@@ -1,10 +1,10 @@
-define(['jquery', 'underscore', 'backbone'], function(a, b, c) {
+define(['nav', 'state', 'step'], function(a, b, c) {
 	'use strict';
 
 	console.log('loaded main');
-	console.log('jquery:', a);
-	console.log('underscore:', b);
-	console.log('backbone:', c);
+	console.log('a:', a);
+	console.log('b:', b);
+	console.log('c:', c);
 
 	return {};
 	/*return {

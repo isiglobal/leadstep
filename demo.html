@@ -12,11 +12,8 @@
   <body>
     <div id="main">
     </div>
-    <!-- Libs -->
+    <!-- Configure require.js and import LeadStep main -->
     <script src="./includes/require.js"></script>
-    <!--<script data-main="scripts/main" src="scripts/require.js"></script>-->
-    <!--<script src="./includes/mustache.js"></script>-->
-    <!-- LeadStep -->
     <script type="text/javascript">
       require.config({
         baseUrl: './src',
@@ -38,12 +35,12 @@
           'backbone': '../includes/backbone',
         },
       });
+
+      // Import main module
       requirejs(['main'], function(main) {
           console.log('index callback');
           console.log(main);
       });
-
-      //require(['main'], function(main) { console.log(main); });
     </script>
   </body>
 </html>
