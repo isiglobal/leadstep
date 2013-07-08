@@ -4,7 +4,34 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-	'amd-dist': {
+ 	concat: {
+		options: {
+			separator: '',
+		},
+		dist: {
+        	//src: '<%= meta.folders.js %>**/*.js',
+        	//dest: '<%= meta.folders.js %>page.js',
+        	src: 'src2/*.js',
+			dest: 'outputASDDFDF.js',
+   		},
+	},
+  	/*library: {
+		options: {
+			//source: 'src2/',
+  			//destination: 'output/',
+  			//builder_dir: 'build/',
+			// Task-specific options go here
+		},
+  		leadstep: {
+			builder: 'build.js', // XXX: ???
+			src: 'src2/',
+			dest: 'output/',
+			version: '0.0.1',
+		},
+	},*/
+
+  });
+	/*'amd-dist': {
 		all: {
 			options: {
 				standalone: true, // remove r.js dependency via almond
@@ -36,26 +63,17 @@ module.exports = function(grunt) {
 		logLevel: 0, // XXX: ???
 		locale: 'en-us',  // XXX: ???
 		//optimizeCss: 'standard',
-		/*paths: {
-			'deferreds': 'src',
-			'mout': 'lib/mout',
-			'signals': 'lib/signals',
-			'setimmediate': 'lib/setImmediate'
-		},
-		shim: {
-			setImmediate: {
-				exports: 'setImmediate'
-			}
-		},*/
-	},
-
-  });
+	},*/
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-amd-dist');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  //grunt.loadNpmTasks('grunt-amd-dist');
+  //grunt.loadNpmTasks('grunt-library');
+  grunt.loadNpmTasks('grunt-neuter');
 
-  grunt.registerTask('default', ['amd-dist']);
+  //grunt.registerTask('default', ['concat']);
+  grunt.registerTask('default', ['neuter:concat:dist','concat:dist']);
   //grunt.registerTask('build', ['amd-dist']);
   //grunt.registerTask('test', ['todo1', 'todo2']);
 };
