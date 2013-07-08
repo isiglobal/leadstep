@@ -13,35 +13,6 @@
     <div id="main">
     </div>
     <!-- Configure require.js and import LeadStep main -->
-    <script src="./includes/require.js"></script>
-    <script type="text/javascript">
-      require.config({
-        baseUrl: './src',
-        /*shim: {
-          'backbone': {
-            deps: ['underscore', 'jquery'],
-            exports: 'Backbone',
-          },
-          'underscore': {
-            exports: '_',
-          },
-          'jquery': {
-            exports: '$',
-          },
-        },
-        paths: {
-          'jquery': '../includes/jquery',
-          'underscore': '../includes/underscore',
-          'backbone': '../includes/backbone',
-        },*/
-      });
-
-      // Import main module
-      /*requirejs(['main'], function(main) {
-          console.log('index callback');
-          console.log(main);
-      });*/
-    </script>
-    <script src="./dist/output.js"></script>
+    <script src="./OUTPUT_PRODUCTION.js"></script>
   </body>
 </html>

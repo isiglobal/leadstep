@@ -26,6 +26,11 @@ Build Tool Comparison
 * Good: ???
 * Bad: Terrible docs. Terrible configuration (JSON file per directory); no inline dependency specification!
 
+**Grunt-Neuter**
+
+* Good: Sorts out dependencies with inline "require()" declaration. Can wrap each source file with a template.
+* Bad: "require()" isn't real, it's just an exploded regex match. There's no way to define exports. There's no way to set up or utilize namespaces. Still, this is better than the alternatives seen thus far.
+
 Closing Notes
 -------------
 The decisions I reach here may not have bearing on your project/needs. I was not able to survey the entire Node/Grunt/AMD/etc. landscape and may have missed some important projects. Additionally, these decisions will likely become stale as time progresses. 

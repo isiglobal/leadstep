@@ -1,15 +1,7 @@
-define([
-  ], 
-  function() {
-	'use strict';
 
-	console.log('loaded nav');
+console.log('nav loaded');
 
-	var nav = function() {
-		console.log('nav');
-	}
+var nav = function() {
+	console.log('nav function');
+};
 
-	return {
-		nav: 'nav',
-	};
-});
