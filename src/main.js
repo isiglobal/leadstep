@@ -6,10 +6,9 @@ define(['nav', 'state', 'step'], function(a, b, c) {
 	console.log('b:', b);
 	console.log('c:', c);
 
-	return {};
-	/*return {
+	return {
 		foo: function() {
 			console.log('foo');
 		},
-	}*/
+	}
 });

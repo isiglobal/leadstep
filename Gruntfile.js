@@ -21,16 +21,16 @@ module.exports = function(grunt) {
 	},
 	requirejs: {
 		//out: './src',
-		//appDir: './src',
 		optimize: 'none',
+		//appDir: '.',
 		baseUrl: './src',
+		out: 'leadstep.out.js',
 		mainConfigFile: './src/main.js',
 		name: 'main',
-		out: 'leadstep.out.js',
 		keepBuildDir: true,
 		useStrict: true,
-		skipModuleInsertion: false, // XXX: ???
-		removeCombined: false, // XXX: ???
+		removeCombined: false, // don't delete files!
+		skipModuleInsertion: true,
 		findNestedDependencies: true, // XXX: ???
 		preserveLicenseComments: false, // XXX: ???
 		logLevel: 0, // XXX: ???
@@ -56,6 +56,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-amd-dist');
 
   grunt.registerTask('default', ['amd-dist']);
-  grunt.registerTask('build', ['amd-dist']);
-  grunt.registerTask('test', ['todo1', 'todo2']);
+  //grunt.registerTask('build', ['amd-dist']);
+  //grunt.registerTask('test', ['todo1', 'todo2']);
 };
