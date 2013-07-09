@@ -6,13 +6,20 @@
   -->
   <head>
     <title>LeadStep Demo and Development Sandbox</title>
+    <!-- TODO: Combine and minify styles. -->
     <link href="./includes/yui-reset.css" rel="stylesheet">
     <link href="./includes/design.css" rel="stylesheet">
   </head>
   <body>
     <div id="main">
     </div>
-    <!-- Configure require.js and import LeadStep main -->
-    <script src="./OUTPUT_PRODUCTION.js"></script>
+    <!-- TODO: Combine and minify library separately. -->
+    <script src="includes/jquery.js"></script>
+    <script src="includes/underscore.js"></script>
+    <script src="includes/backbone.js"></script>
+    <script src="nocache.js"></script>
+    <script>
+      nocache_load('leadstep.js');  
+    </script>
   </body>
 </html>

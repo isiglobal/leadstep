@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 					dest: 'leadstep.js',
 				}],
 			},
-			development: {
+			/*development: {
 				options: {
 					filepathTransform: function(fp) { 
 						return 'src/' + fp; 
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 					src: 'src/main.js',
 					dest: 'leadstep.dev.js',
 				}],
-			},
+			},*/
 		},
 		uglify: {
 			options: {
@@ -52,12 +52,28 @@ module.exports = function(grunt) {
 				}],
 			},
 		},
+
+		watch: {
+			script: {
+				files: ['src/*.js', 'src/*/*.js'],
+				tasks: ['neuter:production'],
+			},
+			/*style: {
+				// Less, SASS, Stylus, etc.
+			},*/
+		},
 	});
  
+	// TODO: Write these dependencies to package.json
+	// TODO: Write jQuery, Backbone, etc. dependencies
+	// TODO: Remove old dependencies that are no longer used
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-neuter');
 
-	grunt.registerTask('default', ['neuter:production']);
-	grunt.registerTask('build', ['neuter:production', 'uglify']);
+	// TODO: jslint, build tests, etc.
 	//grunt.registerTask('test', ['todo1', 'todo2']);
+	//grunt.registerTask('default', ['neuter:production']);
+	grunt.registerTask('default', ['neuter:production', 'watch']);
+	grunt.registerTask('build', ['neuter:production', 'uglify']);
 };

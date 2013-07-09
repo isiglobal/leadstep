@@ -25,7 +25,7 @@ var nav = function() {
 //	-	Try to force build before git commit
 
 
-console.log('main loaded');
+console.log('main loaded... test');
 
 var main = function() {
 	console.log('main function');
