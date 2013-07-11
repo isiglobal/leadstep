@@ -5,6 +5,8 @@ module.exports = function(grunt) {
 
 		meta: {
 			copyright: 'Copyright (c) 2013 Brandon Thomas <bt@brand.io>',
+			notifyCmd: 'notify-send -i ' +
+						'/usr/share/icons/gnome/32x32/emotes/face-laugh.png ',
 		},
 
 		neuter: {
@@ -57,11 +59,21 @@ module.exports = function(grunt) {
 		watch: {
 			script: {
 				files: ['src/*.js', 'src/*/*.js'],
-				tasks: ['neuter:production'],
+				tasks: ['neuter:production', 'shell:alert'],
 			},
 			/*style: {
 				// Less, SASS, Stylus, etc.
 			},*/
+		},
+
+		shell: {
+			alert: {
+				command: '<%= meta.notifyCmd%> "Grunt Has Compiled Your JS" ' +
+						 '"The results are indubitably awesome."',
+				options: {
+					stdout: false,
+				},
+			},
 		},
 	});
  
@@ -71,6 +83,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-neuter');
+	grunt.loadNpmTasks('grunt-shell');
 
 	// TODO: jslint, build tests, etc.
 	//grunt.registerTask('test', ['todo1', 'todo2']);
