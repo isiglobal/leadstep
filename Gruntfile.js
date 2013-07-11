@@ -10,12 +10,12 @@ module.exports = function(grunt) {
 		neuter: {
 			production: {
 				options: {
-					filepathTransform: function(fp) { 
-						return 'src/' + fp; 
+					filepathTransform: function(fp) {
+						return 'src/' + fp;
 					},
 					includeSourceURL: false,
 					//template: '(function){ {%= src %} })();',
-					template: '{%= src %}',
+					template: '{%= src %}', // for now, eventually wrap.frag
 				},
 				files: [{
 					src: 'src/main.js',
@@ -24,8 +24,8 @@ module.exports = function(grunt) {
 			},
 			/*development: {
 				options: {
-					filepathTransform: function(fp) { 
-						return 'src/' + fp; 
+					filepathTransform: function(fp) {
+						return 'src/' + fp;
 					},
 					includeSourceURL: true,
 					//template: '(function){ {%= src %} })();',
@@ -37,6 +37,7 @@ module.exports = function(grunt) {
 				}],
 			},*/
 		},
+
 		uglify: {
 			options: {
 				banner: '/*! ' +
@@ -75,5 +76,5 @@ module.exports = function(grunt) {
 	//grunt.registerTask('test', ['todo1', 'todo2']);
 	//grunt.registerTask('default', ['neuter:production']);
 	grunt.registerTask('default', ['neuter:production', 'watch']);
-	grunt.registerTask('build', ['neuter:production', 'uglify']);
+	grunt.registerTask('build', ['neuter:production']); //, 'uglify']);
 };
