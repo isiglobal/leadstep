@@ -15,7 +15,7 @@ var Step = Backbone.Model.extend({
 		parents: null,
 		children: null,
  
-		// Requires data to move to next step?
+		// Requires data to move to next step? TODO
 		requiresData: false, // false | 'some' | 'all'
 	},
 
@@ -27,6 +27,7 @@ var Step = Backbone.Model.extend({
 	},
 
 	// Add Step, Array, or Collection of Steps.
+	// Does not prevent duplicates from being added!
 	setNext: function(steps) {
 		var children = this.get('children'),
 			i = 0;
@@ -48,15 +49,15 @@ var Step = Backbone.Model.extend({
 		}
 	},
 
-	// PRIVATE METHOD
+	// PRIVATE METHOD !
 	_addParent: function(parent) {
 		this.get('parents').add(parent);
 	},
 
-	///////////////////////////////////
-	// 	  Override These Functions   //
-	// to provide core functionality //
-	///////////////////////////////////
+	////////////////////////////////////
+	// 	   Override These Functions   //
+	// to provide add'l functionality //
+	////////////////////////////////////
 
 	next: function() {
 		if(!this.canProceed()) {
@@ -90,23 +91,19 @@ var Step = Backbone.Model.extend({
 
 var Steps = Backbone.Collection.extend({
 	model: Step,
-	get: function(key) {
-		return this.findWhere([{key: key}]);
-	},
-	model: Step,
 
 	// Pointer to last visited and current stage
 	_cur: 0,
-	_last: 0,
+	_prev: 0,
 
 	/////////// NAVIGATION ///////////
-	// These *DO* trigger a change event!
+	// These *TRIGGER* a change event!
 
 	next: function() {
 		if(this._cur >= this.length - 1) {
 			return;
 		}
-		this._last = this._cur;
+		this._prev = this._cur;
 		this._cur += 1;
 		this.trigger('steps:change');
 	},
@@ -115,7 +112,7 @@ var Steps = Backbone.Collection.extend({
 		if(this._cur <= 0) {
 			return;
 		}
-		this._last = this._cur;
+		this._prev = this._cur;
 		this._cur -= 1;
 		this.trigger('steps:change');
 	},
@@ -127,17 +124,20 @@ var Steps = Backbone.Collection.extend({
 		if(n < 0 || n >= this.length) {
 			return;
 		}
-		this._last = this._cur;
+		this._prev = this._cur;
 		this._cur = n;
 		this.trigger('steps:change');
 	},
 
-	/////////// STEP ACCESSORS /////////////
-	// These do *not* trigger a change event!
+	/////////// STEP ACCESSORS //////////////
+	// These do *NOT* trigger a change event!
 
 	getCurStep: function() { return this.at(this._cur); },
 	getNextStep: function() { return this.at(this.nextId()); },
 	getPrevStep: function() { return this.at(this.prevId()); },
+	getKey: function(key) { // TODO: gotoKey()
+		return this.findWhere([{key: key}]);
+	},
 
 	/////////// POINTERS /////////////
 

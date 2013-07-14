@@ -1,31 +1,44 @@
-require('nav');
+//
+// LeadStep
+// Copyright (c) 2013 Brandon Thomas <bt@brand.io>
+//
+
+// TODO: Doc Block
+// TODO: Everything in LeadStep.* namespace.
+// TODO: open_frag.js, close_frag.js
+
 require('step');
+require('nav');
 require('field');
 
-// ASDDF
 //
-// Get rid of Require.js -- it's not a good build process
-// Find out how to build with Node.js require(), export(), etc.
+// Main App and API
 //
-//	-	/src
-//			- models.js
-//			- views.js
-//			- etc.js
-//
-//	- 	/build
-//			- leadstep.js
-//			- leadstep.min.js
-//
-//	-	Include git tag, build date, author, license, etc.
-//	-	Try to force build before git commit
+var LeadStep = Backbone.View.extend({
+	nav: {
+		state: null, // model
+		reset: null, // views...
+		prev: null,
+		next: null,
+	},
 
+	// Collection of all steps in the app
+	steps: null,
 
-console.log('main loaded... test');
+	initialize: function() {
+		var ns = null;
 
-var main = function() {
-	console.log('main function');
-};
+		ns = new NavState();
+		this.nav.state = ns
+		this.nav.reset = new ResetButton({model: ns, app: this});
+		this.nav.prev = new PrevButton({model: ns, app: this});
+		this.nav.next = new NextButton({model: ns, app: this});
 
-var main_test = function() {
-	console.log('main_test');
-};
+		this.steps = new Steps();
+	},
+
+	addStep: function(step) {
+		this.steps.add(step);
+	},
+});
+

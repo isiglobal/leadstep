@@ -6,7 +6,8 @@ module.exports = function(grunt) {
 		meta: {
 			copyright: 'Copyright (c) 2013 Brandon Thomas <bt@brand.io>',
 			notifyCmd: 'notify-send -i ' +
-						'/usr/share/icons/gnome/32x32/emotes/face-laugh.png ',
+						'/usr/share/icons/gnome/32x32/emotes/face-laugh.png ' +
+						'-t 500 ',
 		},
 
 		neuter: {
@@ -68,8 +69,8 @@ module.exports = function(grunt) {
 
 		shell: {
 			alert: {
-				command: '<%= meta.notifyCmd%> "Grunt Has Compiled Your JS" ' +
-						 '"The results are indubitably awesome."',
+				command: '<%= meta.notifyCmd%> "Grunt" ' +
+						 '"Yay, compiled!"',
 				options: {
 					stdout: false,
 				},
